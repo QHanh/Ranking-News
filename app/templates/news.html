@@ -8,7 +8,7 @@
     <ul>
     {% for index, row in news.iterrows() %}
         <li>
-            <a href="{{ row['Url'] }}">{{ row['Title'] }}</a> - {{ row['Like'] }} likes
+            <a href="{{ row['Url'] }}">{{ row['Title'] }}</a> - {{ row['Like'] }} likes - Time: {{ row['Time'] }}
         </li>
     {% endfor %}
     </ul>
