@@ -6,5 +6,5 @@ def init_routes(app):
     def home():
         news = scrape_data()
         if news.empty:
-            return "No news articles were found or could be ranked."
+            return "No news articles were found."
         return render_template('news.html', news=news)
