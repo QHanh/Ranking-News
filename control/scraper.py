@@ -1,40 +1,31 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import pandas as pd
+from selenium.common.exceptions import NoSuchElementException
 from time import sleep
-from datetime import datetime
-from math import pow
 
 def get_news_info(news_elm, driver1):
-    G = 1.8
     title = news_elm.find_element(By.CLASS_NAME, 'cfbiznews_title').text
     url = news_elm.find_element(By.CLASS_NAME, 'cfbiznews_title').get_attribute('href')
-
+    driver1.get(url)
+    sleep(2)
+    time_str = driver1.find_element(By.ID, 'hidLastModifiedDate').get_attribute('value')
     try:
-        driver1.get(url)
-        sleep(2)
-        time_str = driver1.find_element(By.ID, 'hidLastModifiedDate').get_attribute('value')
-        iframe = driver1.find_elements(By.TAG_NAME,'iframe')[1]
+        iframe = driver1.find_elements(By.TAG_NAME, 'iframe')[1]
         driver1.switch_to.frame(iframe)
         sleep(2)
         count_like = driver1.find_element(By.CLASS_NAME, '_5n6h').text
-    except Exception as e:
-        count_like = 0
-        time_str = None
-
-    time_format = '%d/%m/%Y %H:%M:%S'
-    time_obj = datetime.strptime(time_str, time_format)
-    
-    t = (datetime.now() - time_obj).total_seconds() / 3600
-    
-    score = int(count_like) / pow((t + 2), G)
+    except (IndexError, NoSuchElementException):
+        driver1.switch_to.default_content()
+        iframe = driver1.find_elements(By.TAG_NAME, 'iframe')[2]
+        driver1.switch_to.frame(iframe)
+        sleep(2)
+        count_like = driver1.find_element(By.CLASS_NAME, '_5n6h').text
 
     result = {
         'Title': title,
         'Url': url,
         'Like': int(count_like),
-        'Time': time_str,
-        'Score': score
+        'Time': time_str
     }
     return result
 
@@ -56,6 +47,4 @@ def scrape_data():
     driver.quit()
     driver1.quit()
 
-    df = pd.DataFrame(all_product_list)
-    sorted_df = df.sort_values(by='Score', ascending=False)
-    return sorted_df
+    return all_product_list
