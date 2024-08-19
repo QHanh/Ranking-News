@@ -2,8 +2,7 @@
 
 ## Mô tả dự án
 
-Crawl tin tức từ website [CafeBiz](https://cafebiz.vn/cong-nghe.chn) và xếp hạng các bài viết dựa trên số lượng lượt thích (likes) trên Facebook. 
-Dữ liệu sau đó được lưu trữ và sắp xếp để phục vụ cho mục đích phân tích và hiển thị.
+Crawl tin tức từ website [CafeBiz](https://cafebiz.vn/cong-nghe.chn) và xếp hạng các bài viết dựa trên số điểm của bài.
 
 ## Tính năng chính
 
