@@ -9,7 +9,7 @@ Dữ liệu sau đó được lưu trữ và sắp xếp để phục vụ cho m
 
 - Crawl dữ liệu từ trang web công nghệ của CafeBiz.
 - Crawl thông tin về tiêu đề, URL, và số lượng lượt thích trên Facebook của các bài viết.
-- Sắp xếp các bài viết theo số lượng lượt thích giảm dần.
+- Sắp xếp các bài viết theo điểm số được tính dựa trên lượt thích và thời gian đăng của tin tức.
 - Hiển thị lên server với Flask.
 
 ## Cài đặt
