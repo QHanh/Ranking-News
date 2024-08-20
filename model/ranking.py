@@ -1,4 +1,4 @@
-from control.scraper import scrape_data
+from crawl_data.scraper import scrape_data
 import pandas as pd
 from datetime import datetime
 from math import pow

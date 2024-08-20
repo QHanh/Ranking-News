@@ -30,7 +30,7 @@ def get_news_info(news_elm, driver1):
     return result
 
 def scrape_data():
-    url = 'https://cafebiz.vn/cong-nghe.chn'
+    url = 'https://cafebiz.vn'
     driver = webdriver.Chrome()
 
     driver.get(url)

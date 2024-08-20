@@ -1,5 +1,5 @@
 from flask import render_template
-from control.ranking import ranking_news
+from model.ranking import ranking_news
 
 def init_routes(app):
     @app.route('/')
